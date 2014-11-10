@@ -4,7 +4,7 @@
     bootstrap="vendor/autoload.php">
     
     <testsuites>
-        <testsuite name="SintegraGratis Test">
+        <testsuite name="SintegraPHP Test">
             <directory suffix=".php">./tests</directory>
         </testsuite>
     </testsuites>

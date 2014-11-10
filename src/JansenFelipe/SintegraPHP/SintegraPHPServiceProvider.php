@@ -19,7 +19,7 @@ class SintegraPHPServiceProvider extends ServiceProvider {
      * @return void
      */
     public function boot() {
-        $this->package('JansenFelipe/sintegra-gratis');
+        $this->package('JansenFelipe/sintegra-php');
     }
 
     /**
@@ -28,7 +28,7 @@ class SintegraPHPServiceProvider extends ServiceProvider {
      * @return void
      */
     public function register() {
-        $this->app->singleton('sintegra_gratis', function() {
+        $this->app->singleton('sintegra_php', function() {
             return new \JansenFelipe\SintegraPHP\SintegraPHP;
         });
     }

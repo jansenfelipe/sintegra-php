@@ -5,6 +5,7 @@ namespace JansenFelipe\SintegraPHP;
 use Doctrine\Common\Annotations\AnnotationReader;
 use JansenFelipe\SintegraPHP\Annotations\Campo;
 use JansenFelipe\SintegraPHP\Annotations\Registro;
+use JansenFelipe\Utils\Utils;
 use ReflectionClass;
 
 class SintegraPHP {
@@ -30,7 +31,7 @@ class SintegraPHP {
                 $valor = str_pad($valor, $campo->tamanho, ' ', $campo->pad_type);
 
             if ($campo->tipo == 'numeric')
-                $valor = str_pad($valor, $campo->tamanho, '0', $campo->pad_type);
+                $valor = str_pad(Utils::unmask($valor), $campo->tamanho, '0', $campo->pad_type);
 
             $linha .= $valor;
         }
