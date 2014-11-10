@@ -1,0 +1,36 @@
+{
+    "name": "jansenfelipe/sintegra-gratis",
+    "description": "Com esse pacote você poderá gerar gratuitamente o arquivo Sintegra para envio a Sefaz.",
+    "keywords": ["laravel", "sintegra", "cnpj", "php"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jansen Felipe",
+            "email": "jansen.felipe@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/filesystem": "5.0.*@dev",
+        "jansenfelipe/utils": "1.0.*@dev"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "JansenFelipe\\SintegraGratis": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+     "suggest": {
+        "jansenfelipe/cnpj-gratis": "Permite consulta de CNPJ no site da receita",
+        "jansenfelipe/cpf-gratis": "Permite consulta de CPF no site da receita",
+        "jansenfelipe/cep-gratis": "Permite consulta de CEP no site dos Correios"
+    },
+    "minimum-stability": "dev"
+}
