@@ -1,6 +1,6 @@
 <?php
 
-namespace JansenFelipe\SintegraGratis;
+namespace JansenFelipe\SintegraPHP;
 
 class Facade extends \Illuminate\Support\Facades\Facade {
 

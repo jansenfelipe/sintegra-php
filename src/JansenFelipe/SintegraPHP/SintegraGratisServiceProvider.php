@@ -1,10 +1,10 @@
 <?php
 
-namespace JansenFelipe\SintegraGratis;
+namespace JansenFelipe\SintegraPHP;
 
 use Illuminate\Support\ServiceProvider;
 
-class SintegraGratisServiceProvider extends ServiceProvider {
+class SintegraPHPServiceProvider extends ServiceProvider {
 
     /**
      * Indicates if loading of the provider is deferred.
@@ -29,7 +29,7 @@ class SintegraGratisServiceProvider extends ServiceProvider {
      */
     public function register() {
         $this->app->singleton('sintegra_gratis', function() {
-            return new \JansenFelipe\SintegraGratis\SintegraGratis;
+            return new \JansenFelipe\SintegraPHP\SintegraPHP;
         });
     }
 
