@@ -3,16 +3,16 @@
 namespace JansenFelipe\SintegraPHP;
 
 use Doctrine\Common\Annotations\AnnotationReader;
-use JansenFelipe\SintegraPHP\Annotations\Campo;
-use JansenFelipe\SintegraPHP\Annotations\Registro;
+use Doctrine\Common\Annotations\AnnotationRegistry;
 use JansenFelipe\Utils\Utils;
 use ReflectionClass;
 
 class SintegraPHP {
 
     public static function gerarLinha($layout) {
-        new Registro(array());
-        new Campo(array());
+        AnnotationRegistry::registerAutoloadNamespace(
+                'JansenFelipe\SintegraPHP\Annotations', './src'
+        );
 
         $reader = new AnnotationReader();
         $reflectionClass = new ReflectionClass($layout);

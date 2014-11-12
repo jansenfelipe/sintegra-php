@@ -8,7 +8,7 @@ use JansenFelipe\SintegraPHP\Annotations\Campo;
 /**
  * @Registro(tipo="50")
  */
-class Registro50 {
+class Registro50 extends Layout{
 
     /**
      * CNPJ do remetente nas entradas e do destinatário nas saídas

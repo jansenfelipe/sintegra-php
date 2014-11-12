@@ -8,7 +8,7 @@ use JansenFelipe\SintegraPHP\Annotations\Campo;
 /**
  * @Registro(tipo="11")
  */
-class Registro11 {
+class Registro11 extends Layout{
 
     /**
      * @Campo(tipo="string", tamanho="34")
