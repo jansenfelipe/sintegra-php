@@ -3,9 +3,9 @@
 namespace JansenFelipe\SintegraPHP\Layouts;
 
 use JansenFelipe\SintegraPHP\Tipos\FinalidadeArquivo;
-
-use JansenFelipe\SintegraPHP\Tipos\FinalidadeArquivo;
 use JansenFelipe\SintegraPHP\Tipos\NaturezaOperacao;
+use JansenFelipe\SintegraPHP\Annotations\Registro;
+use JansenFelipe\SintegraPHP\Annotations\Campo;
 
 /**
  * @Registro(tipo="10")
