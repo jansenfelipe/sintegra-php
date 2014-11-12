@@ -1,5 +1,5 @@
 {
-    "name": "jansenfelipe/sintegra-gratis",
+    "name": "jansenfelipe/sintegra-php",
     "description": "Com esse pacote você poderá gerar gratuitamente o arquivo Sintegra para envio a Sefaz.",
     "keywords": ["laravel", "sintegra", "cnpj", "php"],
     "license": "MIT",
