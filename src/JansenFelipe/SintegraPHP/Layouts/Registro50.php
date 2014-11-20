@@ -222,8 +222,8 @@ class Registro50 extends Layout{
         $this->emitente = $emitente;
     }
 
-    public function setValorTotal($valorTotal) {
-        $this->valorTotal = $valorTotal;
+    public function setValorTotal($valorTotal) {        
+        $this->valorTotal = number_format($valorTotal, 2, '.', '');
     }
 
     public function setBaseDeCalculoIcms($baseDeCalculoIcms) {
