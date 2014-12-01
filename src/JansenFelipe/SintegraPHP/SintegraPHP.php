@@ -11,6 +11,8 @@ use JansenFelipe\SintegraPHP\Layouts\Registro10;
 use JansenFelipe\SintegraPHP\Layouts\Registro11;
 use JansenFelipe\SintegraPHP\Layouts\Registro50;
 use JansenFelipe\SintegraPHP\Layouts\Registro54;
+use JansenFelipe\SintegraPHP\Layouts\Registro75;
+use JansenFelipe\SintegraPHP\Layouts\Registro90;
 
 class SintegraPHP {
 
@@ -20,13 +22,18 @@ class SintegraPHP {
     private $registro11;
     private $registros50;
     private $registros54;
+    private $registros75;
+    private $registros90;
+    private $registrosCount;
 
     function __construct() {
         $this->notasFiscaisEntrada = new ArrayCollection();
         $this->notasFiscaisSaida = new ArrayCollection();
         $this->registros50 = new ArrayCollection();
         $this->registros54 = new ArrayCollection();
-
+        $this->registros75 = new ArrayCollection();
+        $this->registros90 = new ArrayCollection();
+        $this->registrosCount = array();
         AnnotationRegistry::registerAutoloadNamespace(
                 'JansenFelipe\SintegraPHP\Annotations', './src'
         );
@@ -65,11 +72,24 @@ class SintegraPHP {
 
         $this->processarSaida();
 
-        foreach ($this->registros50->getValues() as $registro50)
+        $this->registrosCount['50'] = 0;
+        foreach ($this->registros50->getValues() as $registro50){
             $data .= $registro50->gerarLinha() . PHP_EOL;
+            $this->registrosCount['50']++;
+        }
 
-        foreach ($this->registros54->getValues() as $registro54)
+        $this->registrosCount['54'] = 0;
+        foreach ($this->registros54->getValues() as $registro54){
             $data .= $registro54->gerarLinha() . PHP_EOL;
+            $this->registrosCount['54']++;
+        }
+
+        $this->registrosCount['75'] = 0;
+        foreach ($this->registros75->getValues() as $registro75){
+            $data .= $registro75->gerarLinha() . PHP_EOL;
+            $this->registrosCount['75']++;
+        }
+
 
         return $data;
     }
@@ -167,6 +187,22 @@ class SintegraPHP {
                 $r54->setValorDesconto((21.5 / 100) * $prod->vProd); //?? Verificar isso ...
 
                 $this->registros54->add($r54);
+
+                /*
+                 * Criando registro 75
+                 */
+                $r75 = new registro75();
+                $r75->setDataInicial('2014-09-08');
+                $r75->setDataFinal('2014-09-08');
+                $r75->setCodigo($prod->cProd);
+                $r75->setNcm($prod->NCM);
+                $r75->setDescricao($prod->xProd);
+                $r75->setUnidadeMedida($prod->uCom);
+                // $r75->setAliquotaIPI();
+                // $r75->setAliquotaICMS
+                // $r75->setReducaoBaseICMS
+                // $r75->setBaseICMS
+                $this->registros75->add($r75);
             }
 
             /*
