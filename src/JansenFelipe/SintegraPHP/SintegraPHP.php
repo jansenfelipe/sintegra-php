@@ -24,7 +24,7 @@ class SintegraPHP {
     private $registros54;
     private $registros75;
     private $registros90;
-    private $registrosCount;
+    private $registrosCount = array();
 
     function __construct() {
         $this->notasFiscaisEntrada = new ArrayCollection();
@@ -72,24 +72,33 @@ class SintegraPHP {
 
         $this->processarSaida();
 
-        $this->registrosCount['50'] = 0;
+        $count = 0;
         foreach ($this->registros50->getValues() as $registro50){
             $data .= $registro50->gerarLinha() . PHP_EOL;
-            $this->registrosCount['50']++;
+            $count++;
         }
+        $this->registrosCount[50]  = array('valor' => $count);
 
-        $this->registrosCount['54'] = 0;
+        $count = 0;
         foreach ($this->registros54->getValues() as $registro54){
             $data .= $registro54->gerarLinha() . PHP_EOL;
-            $this->registrosCount['54']++;
+            $count++;
         }
+        $this->registrosCount[54]  = array('valor' => $count);
 
-        $this->registrosCount['75'] = 0;
+        $count = 0;
         foreach ($this->registros75->getValues() as $registro75){
             $data .= $registro75->gerarLinha() . PHP_EOL;
-            $this->registrosCount['75']++;
+            $count++;
         }
+        $this->registrosCount[75]  = array('valor' => $count);
 
+        $this->processarSaidaFinal();
+
+        foreach ($this->registros90->getValues() as $registro90){
+            // print_r($registro90);
+            $data .= $registro90->gerarLinha() . PHP_EOL;
+        }
 
         return $data;
     }
@@ -210,7 +219,20 @@ class SintegraPHP {
              */
             foreach ($registros50 as $row)
                 $this->registros50->add($row);
+
+
         }
+    }
+
+    public function processarSaidaFinal(){
+         /*
+         * Preparação do registro 90
+         */
+        $r90 = new Registro90();
+        $r90->setCgcMF($this->registro10->getCnpj());
+        $r90->setInscricaoEstadual($this->registro10->getIe());
+        $r90->setRegistrosTotal($this->registrosCount);
+        $this->registros90->add($r90);
     }
 
     /*

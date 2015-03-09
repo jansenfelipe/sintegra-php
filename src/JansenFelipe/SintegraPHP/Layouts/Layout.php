@@ -21,13 +21,31 @@ class Layout {
             $campo = $reader->getPropertyAnnotation($property, 'JansenFelipe\SintegraPHP\Annotations\Campo');
             $property->setAccessible(true);
 
-            $valor = substr($property->getValue($this), 0, $campo->tamanho);
+            if(!is_array($property->getValue($this)))
+                $valor = substr($property->getValue($this), 0, $campo->tamanho);
+            else
+                $valor = $property->getValue($this);
 
-            if ($campo->tipo == 'string')
-                $valor = str_pad($valor, $campo->tamanho, ' ', $campo->pad_type);
+            if(!is_array($valor)){
+                if ($campo->tipo == 'string'){
+                    $valor = str_pad($valor, $campo->tamanho, ' ', $campo->pad_type);
+                }
 
-            if ($campo->tipo == 'numeric') {
-                $valor = str_pad(Utils::unmask($valor), $campo->tamanho, '0', $campo->pad_type);
+                if ($campo->tipo == 'numeric') {
+                    $valor = str_pad(Utils::unmask($valor), $campo->tamanho, '0', $campo->pad_type);
+                }
+            }else{
+                $valorPT = "";
+                
+                // exit;
+                foreach ($valor as $key => $value) {
+                    // print_r($value);
+                    $k = str_pad(Utils::unmask($key), 2, '0', $campo->pad_type);   
+                    $v = str_pad(Utils::unmask($value['valor']), 8, '0', $campo->pad_type);  
+                    $valorPT .= $k . $v; 
+                }
+                $valor = $valorPT;
+
             }
 
             $linha .= $valor;

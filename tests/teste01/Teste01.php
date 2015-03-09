@@ -39,6 +39,16 @@ class Teste01 extends PHPUnit_Framework_TestCase {
 
         //Adicionando Nota Fiscal e gerando o output
         $this->sintegraPHP->addNotaFiscal($notaFiscal);
+
+        //Carregando xml..
+        $xml = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'notafiscal1.xml');
+        
+        //Parser..
+        $notaFiscal = $this->NFePHPSerialize->xml2Object($xml);
+
+        //Adicionando Nota Fiscal e gerando o output
+        $this->sintegraPHP->addNotaFiscal($notaFiscal);
+
         $output = $this->sintegraPHP->output();
   
         //Carregando Sintegra correto para testar o $output
@@ -54,7 +64,7 @@ class Teste01 extends PHPUnit_Framework_TestCase {
     public function getRegistro10() {
         $registro10 = new Registro10();
         $registro10->setCnpj('13411752000197');
-        $registro10->setIe('0017498080010');
+        $registro10->setIe('00174980800101');
         $registro10->setRazaoSocial('FIGUEIREDO ALIMENTOS CONGELADOS LTDA - ME');
         $registro10->setCidade('BELO HORIZONTE');
         $registro10->setUf('MG');

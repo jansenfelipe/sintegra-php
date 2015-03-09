@@ -27,16 +27,24 @@ class Registro90 extends Layout {
     /**
      * Tipo de registro que será totalizado pelo próximo campo
      * 
-     * @Campo(tipo="numeric", tamanho="2")
+     * Campo(tipo="numeric", tamanho="2", pad_type=STR_PAD_LEFT)
      */
-    private $tipoTotalizado;
+    private $tipoTotalizado = array();
 
     /**
      * Total de registros do tipo informado no campo anterior
      * 
-     * @Campo(tipo="numeric", tamanho="8")
+     * Campo(tipo="numeric", tamanho="8", pad_type=STR_PAD_LEFT)
      */
-    private $totalRegistro;
+    private $totalRegistro = array();
+
+    /**
+     * Tipo de registro que será totalizado pelo próximo campo
+     * Total de registros do tipo informado no campo anterior
+     * 
+     * @Campo(tipo="numeric", tamanho="10", pad_type=STR_PAD_LEFT)
+     */
+    private $registrosTotal = array();
 
     /**
      * Total de registros 90 do arquivo
@@ -62,22 +70,31 @@ class Registro90 extends Layout {
     {
         return $this->totalRegistro;
     }
+    public function getRegistrosTotal()
+    {
+        return $this->registrosTotal;
+    }
     public function getTotalRegistro90()
     {
         return $this->totalRegistro90;
     }
+
      
     public function setTotalRegistro90($totalRegistro90)
     {
         return $this->totalRegistro90 = $totalRegistro90;
     }
+    public function setRegistrosTotal($registrosTotal)
+    {
+        return $this->registrosTotal = $registrosTotal;
+    }
     public function setTotalRegistro($totalRegistro)
     {
-        return $this->totalRegistro = $totalRegistro;
+        return $this->totalRegistro[] = $totalRegistro;
     }
     public function setTipoTotalizado($tipoTotalizado)
     {
-        return $this->tipoTotalizado = $tipoTotalizado;
+        return $this->tipoTotalizado[] = $tipoTotalizado;
     }
     public function setInscricaoEstadual($inscricaoEstadual)
     {
