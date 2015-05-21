@@ -53,7 +53,7 @@ class Teste01 extends PHPUnit_Framework_TestCase {
   
         //Carregando Sintegra correto para testar o $output
         $sintegra = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'sintegra.txt');
-        file_put_contents('/var/www/sintegra-php/tests/teste01/output.txt', addslashes($output));    
+        file_put_contents('/var/www/html/sintegra-php/tests/teste01/output.txt', addslashes($output));    
         $this->assertEquals(addslashes($sintegra), addslashes($output));
     }
 
