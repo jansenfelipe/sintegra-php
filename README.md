@@ -1,3 +1,7 @@
+# Nota 
+
+Esse projeto está sendo modificado para que atenda completamente a criação do arquivo sintegra. Como é possível notar, os arquivos .output e .sintegra são diferentes.
+
 # Sintegra PHP
 
 Com esse pacote você poderá gerar gratuitamente o arquivo Sintegra para envio a Sefaz.
